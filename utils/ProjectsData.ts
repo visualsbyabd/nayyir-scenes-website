@@ -1,0 +1,158 @@
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import {
+  faFlag,
+  faCircleInfo,
+  faClapperboard,
+  faChartLine,
+  faBullhorn,
+  faLightbulb,
+} from "@fortawesome/free-solid-svg-icons";
+
+export interface Project {
+  id: string;
+  title: string;
+  subtitle: string;
+  genreId: number;
+  likes: number;
+  comments: number;
+  videoUrl: string;
+  videoThumbnailUrl: string;
+  addedIn?: number;
+  aspectRatio?: "16/9" | "9/16";
+}
+export const genres: {
+  id: number;
+  name: string;
+  icon: IconProp;
+  bgColor: string;
+}[] = [
+  { id: 1, name: "Political", icon: faFlag, bgColor: "bg-red-500/15" },
+  { id: 2, name: "Information", icon: faCircleInfo, bgColor: "bg-blue-500/15" },
+  { id: 3, name: "Ad", icon: faClapperboard, bgColor: "bg-green-500/15" },
+  { id: 4, name: "Economical", icon: faChartLine, bgColor: "bg-yellow-500/15" },
+  { id: 5, name: "Marketing", icon: faBullhorn, bgColor: "bg-purple-500/15" },
+  { id: 6, name: "Advertising", icon: faLightbulb, bgColor: "bg-pink-500/15" },
+];
+export const projectsData: Project[] = [
+  {
+    id: "nayy-1",
+    title: "Global Commerce Trends Report",
+    aspectRatio: "9/16",
+    subtitle:
+      "A deep-dive video analysis covering Q3 market shifts and forecasting.",
+    genreId: 4, // Economical
+    likes: 2150,
+    comments: 112,
+    videoUrl: "/videos/1.mp4",
+    videoThumbnailUrl: "/videos-thumbnails/1.png",
+    addedIn: 1760413061878,
+  },
+  {
+    id: "nayy-2",
+    title: "The Silent Vote Campaign",
+    subtitle:
+      "High-impact short film raising awareness for voter registration and engagement.",
+    genreId: 1, // Political
+    likes: 1890,
+    comments: 155,
+    videoUrl: "/videos/2.mp4",
+    videoThumbnailUrl: "/videos-thumbnails/2.png",
+    addedIn: 1760519541168,
+  },
+  {
+    id: "nayy-3",
+    title: "Eco-Tech Product Launch",
+    subtitle:
+      "A captivating 30-second Ad spot emphasizing sustainability and innovation.",
+    genreId: 3, // Ad
+    likes: 2980,
+    comments: 198,
+    videoUrl: "/videos/3.mp4",
+    videoThumbnailUrl: "/videos-thumbnails/3.png",
+    addedIn: 1758657044123,
+  },
+  {
+    id: "nayy-4",
+    title: "Digital Marketing Masterclass",
+    subtitle:
+      "Long-form instructional video providing comprehensive brand strategy guidance.",
+    genreId: 5, // Marketing
+    likes: 1050,
+    comments: 65,
+    videoUrl: "/videos/4.mp4",
+    videoThumbnailUrl: "/videos-thumbnails/4.png",
+    addedIn: 1760942952737,
+  },
+  {
+    id: "nayy-5",
+    title: "Healthcare Transparency",
+    subtitle:
+      "An explainer video simplifying complex insurance and patient rights information.",
+    genreId: 2, // Information
+    likes: 1420,
+    comments: 88,
+    videoUrl: "/videos/5.mp4",
+    videoThumbnailUrl: "/videos-thumbnails/5.png",
+    addedIn: 1761694292722,
+  },
+  {
+    id: "nayy-6",
+    title: "Future Mobility Concept",
+    subtitle:
+      "A visually stunning video showcasing a futuristic automotive advertising concept.",
+    genreId: 6, // Advertising
+    likes: 3000,
+    comments: 200,
+    videoUrl: "/videos/6.mp4",
+    videoThumbnailUrl: "/videos-thumbnails/6.png",
+    addedIn: 1756930802525,
+  },
+  {
+    id: "nayy-7",
+    title: "The Budget Blueprint Series",
+    subtitle:
+      "A video series offering practical tips for small business financial planning.",
+    genreId: 4, // Economical
+    likes: 1675,
+    comments: 130,
+    videoUrl: "/videos/7.mp4",
+    videoThumbnailUrl: "/videos-thumbnails/7.png",
+    addedIn: 1757782394750,
+  },
+  {
+    id: "nayy-8",
+    title: "Local Council Election Spotlight",
+    subtitle:
+      "In-depth political interview series focusing on community development issues.",
+    genreId: 1, // Political
+    likes: 1200,
+    comments: 55,
+    videoUrl: "/videos/8.mp4",
+    videoThumbnailUrl: "/videos-thumbnails/8.png",
+    addedIn: 1759062475490,
+  },
+  {
+    id: "nayy-9",
+    title: "Tech Startup Funding Ad",
+    subtitle:
+      "A fast-paced, investor-focused commercial designed to drive seed capital.",
+    genreId: 3, // Ad
+    likes: 2500,
+    comments: 175,
+    videoUrl: "/videos/9.mp4",
+    videoThumbnailUrl: "/videos-thumbnails/9.png",
+    addedIn: 1759348077361,
+  },
+  {
+    id: "nayy-10",
+    title: "Software User Guide (Animated)",
+    subtitle:
+      "A clear, concise animated video tutorial for new users onboarding.",
+    genreId: 2, // Information
+    likes: 1100,
+    comments: 70,
+    videoUrl: "/videos/10.mp4",
+    videoThumbnailUrl: "/videos-thumbnails/10.png",
+    addedIn: 1761120072712,
+  },
+];
