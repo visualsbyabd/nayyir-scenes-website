@@ -20,7 +20,7 @@ const CountUpOnScroll: React.FC<CountUpProps> = ({ endCount }) => {
   // --- Calculate Dynamic Duration ---
   const dynamicDuration = useMemo(() => {
     // 1. Calculate base duration: (Count * Speed per unit)
-    let calculatedDuration = endCount * BASE_SPEED_MS;
+    const calculatedDuration = endCount * BASE_SPEED_MS;
 
     // 2. Clamp the duration between Min and Max limits for better UX
     return Math.max(
