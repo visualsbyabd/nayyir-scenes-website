@@ -20,7 +20,7 @@ const PortfolioExploreMoreSection = ({onOpenReelVideoPlayer}: {onOpenReelVideoPl
       }
       setSelectedGenre(Number.parseInt(genre));
     })();
-  }, [genres]);
+  }, [genres, searchParams]);
   return (
     <section className="w-full items-center justify-center flex flex-col">
       <SectionTitle

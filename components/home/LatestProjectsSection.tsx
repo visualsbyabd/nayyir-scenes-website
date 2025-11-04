@@ -27,7 +27,7 @@ const LatestProjectsSection = ({onOpenVideoReelPlayer}: {onOpenVideoReelPlayer: 
     }
     const selectedItems = shuffled.slice(0, max);
     setRandomItems(selectedItems);
-  }, [projectsData, max]);
+  }, [max]);
   return (
     <section className="w-full flex flex-col items-center justify-center bg-secondary/50 lg:px-24 lg:py-12 px-4 py-8">
       <div className="max-w-7xl w-[90%] items-center lg:justify-between justify-center flex lg:flex-row flex-col">

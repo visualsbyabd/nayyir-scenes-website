@@ -1,15 +1,8 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
-import { HeroModel } from "@/components/home/Hero-model";
-import { useMediaQuery } from "react-responsive";
-import ModelLights from "@/components/home/ModelLights";
-import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ParallaxProvider, useParallax } from "react-scroll-parallax";
-import { homeHeroBackground } from "@/utils/Assets";
+import { useParallax } from "react-scroll-parallax";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronRight,
@@ -51,13 +44,6 @@ const HeroSection = () => {
     speed: -1000,
     translateY: [-450, 450, "easeInQuad"],
   });
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
-  const [scrollPosition, setScrollPosition] = useState(0);
-  useEffect(() => {
-    const handleScroll = () => setScrollPosition(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
   return (
     <section className="w-full h-screen relative overflow-hidden bg-gradient-to-br from-secondary-varient/50 via-secondary/50 to-secondary-varient/50">
       <div className="w-full h-full flex relative -bottom-2/3 opacity-50">
