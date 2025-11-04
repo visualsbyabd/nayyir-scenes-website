@@ -43,7 +43,6 @@ const HomeContent = () => {
           open={isOpen}
           video={video}
           closeCallback={() => {
-            const searchParams = useSearchParams();
             setVideo(null);
             setIsOpen(false);
           }}
