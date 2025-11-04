@@ -3,7 +3,7 @@ import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef } from "react";
 import { ProjectCard, SectionSubtitle, SectionTitle } from "./global";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const ReelVideoPlayer = ({
   open,
@@ -16,7 +16,17 @@ const ReelVideoPlayer = ({
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
   useEffect(() => {
+    const currentParams = new URLSearchParams(searchParams.toString());
+    currentParams.set("video", video!.id.toString());
+    const queryString = currentParams.toString();
+    router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`, {
+      scroll: false,
+    });
+
     if (videoRef.current) {
       videoRef.current.load();
       videoRef.current.play().catch((error) => {
@@ -31,6 +41,13 @@ const ReelVideoPlayer = ({
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
+        const currentParams = new URLSearchParams(searchParams.toString());
+        currentParams.delete("video");
+        const queryString = currentParams.toString();
+        router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`, {
+          scroll: false,
+        });
+
         closeCallback();
       }
     };
@@ -41,7 +58,15 @@ const ReelVideoPlayer = ({
     <>
       {/* Overlay */}
       <div
-        onClick={closeCallback}
+        onClick={() => {
+          const currentParams = new URLSearchParams(searchParams.toString());
+          currentParams.delete("video");
+          const queryString = currentParams.toString();
+          router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`, {
+            scroll: false,
+          });
+          closeCallback();
+        }}
         className={` z-40 fixed w-full h-full bg-black/35 backdrop-blur-md top-0 left-0 ${
           open ? `flex` : `hidden cursor-none`
         }`}
@@ -55,7 +80,23 @@ const ReelVideoPlayer = ({
         {/* Header */}
         <div className="items-center justify-between flex flex-row w-full mb-4">
           <SectionTitle text="Video Player" />
-          <button onClick={closeCallback} className="cursor-pointer">
+          <button
+            onClick={() => {
+              const currentParams = new URLSearchParams(
+                searchParams.toString()
+              );
+              currentParams.delete("video");
+              const queryString = currentParams.toString();
+              router.replace(
+                `${pathname}${queryString ? `?${queryString}` : ""}`,
+                {
+                  scroll: false,
+                }
+              );
+              closeCallback();
+            }}
+            className="cursor-pointer"
+          >
             <FontAwesomeIcon icon={faClose}></FontAwesomeIcon>
           </button>
         </div>
@@ -82,7 +123,11 @@ const ReelVideoPlayer = ({
           {/* Right Side: Information & Recommendation */}
           <div className="w-full h-full flex flex-col  items-start justify-between">
             <div className=" w-full flex items-start justify-end flex-col">
-              <h3 className={`font-primary font-black g:text-5xl md:text-4xl text-3xl text-primary text-start`}>{video?.title}</h3>
+              <h3
+                className={`font-primary font-black g:text-5xl md:text-4xl text-3xl text-primary text-start`}
+              >
+                {video?.title}
+              </h3>
               <SectionSubtitle
                 text={video?.subtitle ?? "No Video Selected"}
                 textDirection="start"
@@ -98,7 +143,7 @@ const ReelVideoPlayer = ({
                 .slice(0, 4)
                 .map((project) => (
                   <ProjectCard
-                  allowHoverScale={false}
+                    allowHoverScale={false}
                     key={project.id}
                     project={project}
                     openReelVideoPlayerCallback={() => {

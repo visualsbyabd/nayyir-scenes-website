@@ -34,15 +34,6 @@ const HomeContent = () => {
             const searchParams = useSearchParams();
             setVideo(video);
             setIsOpen(true);
-            const currentParams = new URLSearchParams(searchParams.toString());
-            currentParams.set("video", video.id.toString());
-            const queryString = currentParams.toString();
-            router.replace(
-              `${pathname}${queryString ? `?${queryString}` : ""}`,
-              {
-                scroll: false,
-              }
-            );
           }}
         />
       </Suspense>
@@ -55,15 +46,6 @@ const HomeContent = () => {
             const searchParams = useSearchParams();
             setVideo(null);
             setIsOpen(false);
-            const currentParams = new URLSearchParams(searchParams.toString());
-            currentParams.delete("video");
-            const queryString = currentParams.toString();
-            router.replace(
-              `${pathname}${queryString ? `?${queryString}` : ""}`,
-              {
-                scroll: false,
-              }
-            );
           }}
         />
       </Suspense>
