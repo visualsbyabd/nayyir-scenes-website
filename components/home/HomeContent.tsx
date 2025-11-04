@@ -31,7 +31,6 @@ const HomeContent = () => {
       <Suspense>
         <LatestProjectsSection
           onOpenVideoReelPlayer={(video) => {
-            const searchParams = useSearchParams();
             setVideo(video);
             setIsOpen(true);
           }}
