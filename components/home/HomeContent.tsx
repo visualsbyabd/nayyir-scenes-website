@@ -19,7 +19,6 @@ const HomeContent = () => {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   return (
     <>
@@ -32,6 +31,7 @@ const HomeContent = () => {
       <Suspense>
         <LatestProjectsSection
           onOpenVideoReelPlayer={(video) => {
+            const searchParams = useSearchParams();
             setVideo(video);
             setIsOpen(true);
             const currentParams = new URLSearchParams(searchParams.toString());
@@ -52,6 +52,7 @@ const HomeContent = () => {
           open={isOpen}
           video={video}
           closeCallback={() => {
+            const searchParams = useSearchParams();
             setVideo(null);
             setIsOpen(false);
             const currentParams = new URLSearchParams(searchParams.toString());

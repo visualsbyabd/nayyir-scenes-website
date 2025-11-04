@@ -15,7 +15,6 @@ const PortfolioContent = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const router = useRouter();
   const pathname = usePathname();
-  const searchParams = useSearchParams();
 
   return (
     <>
@@ -24,6 +23,7 @@ const PortfolioContent = () => {
         onOpenReelVideoPlayer={(video) => {
           setVideo(video);
           setIsOpen(true);
+          const searchParams = useSearchParams();
           const currentParams = new URLSearchParams(searchParams.toString());
           currentParams.set("video", video.id.toString());
           const queryString = currentParams.toString();
@@ -36,6 +36,8 @@ const PortfolioContent = () => {
         onOpenReelVideoPlayer={(video) => {
           setVideo(video);
           setIsOpen(true);
+          const searchParams = useSearchParams();
+
           const currentParams = new URLSearchParams(searchParams.toString());
           currentParams.set("video", video.id.toString());
           const queryString = currentParams.toString();
@@ -50,6 +52,8 @@ const PortfolioContent = () => {
         closeCallback={() => {
           setVideo(null);
           setIsOpen(false);
+          const searchParams = useSearchParams();
+
           const currentParams = new URLSearchParams(searchParams.toString());
           currentParams.delete("video");
           const queryString = currentParams.toString();
