@@ -2,7 +2,6 @@
 import React from "react";
 import Link from "next/link";
 import { useMediaQuery } from "react-responsive";
-import ModelLights from "@/components/home/ModelLights";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ParallaxProvider, useParallax } from "react-scroll-parallax";
