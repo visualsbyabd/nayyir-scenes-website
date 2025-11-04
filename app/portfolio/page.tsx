@@ -32,7 +32,6 @@ const PortfolioPage = () => {
       />
       <PortfolioExploreMoreSection
         onOpenReelVideoPlayer={(video) => {
-          console.log("Open Project from Page: " + video.id);
           setVideo(video);
           setIsOpen(true);
           const currentParams = new URLSearchParams(searchParams.toString());

@@ -10,7 +10,7 @@ import { Project, projectsData } from "@/utils/ProjectsData";
 import { useMediaQuery } from "react-responsive";
 import { homePageSectionsLabels } from "@/utils/SectionLabels";
 
-const LatestProjectsSection = () => {
+const LatestProjectsSection = ({onOpenVideoReelPlayer}: {onOpenVideoReelPlayer: (project: Project)=> void}) => {
   const isMobile = useMediaQuery({
     query: "(min-width: 0px) and (max-width: 768px)",
   });
@@ -50,7 +50,7 @@ const LatestProjectsSection = () => {
       </div>
       <div className="w-[99%] max-w-7xl h-full mt-8 grid xl:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:gap-x-8 lg:gap-y-8 gap-x-2 gap-y-2">
         {randomItems.map((project: Project, index: number) => (
-          <ProjectCard project={project} key={index} />
+          <ProjectCard project={project} key={index} openReelVideoPlayerCallback={onOpenVideoReelPlayer} />
         ))}
       </div>
     </section>
