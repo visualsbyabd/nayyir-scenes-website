@@ -53,22 +53,22 @@ const DefaultFooter = () => {
           </ul>
           <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-primary/50 sm:mb-0 ">
             <li>
-              <Link href={URL.parse(facebook!)!} className="hover:underline me-4 md:me-6">
+              <Link href={facebook!.href} className="hover:underline me-4 md:me-6">
                 <FontAwesomeIcon icon={faFacebookF} />
               </Link>
             </li>
             <li>
-              <Link href={URL.parse(instagram!)!} className="hover:underline me-4 md:me-6">
+              <Link href={instagram!.href} className="hover:underline me-4 md:me-6">
                 <FontAwesomeIcon icon={faInstagram} />
               </Link>
             </li>
             <li>
-              <Link href={URL.parse(tiktok!)!} className="hover:underline me-4 md:me-6">
+              <Link href={tiktok!.href} className="hover:underline me-4 md:me-6">
                 <FontAwesomeIcon icon={faTiktok} />
               </Link>
             </li>
             <li>
-              <Link href={URL.parse(linkedin!)!} className="hover:underline me-4 md:me-6">
+              <Link href={linkedin!.href} className="hover:underline me-4 md:me-6">
                 <FontAwesomeIcon icon={faLinkedin} />
               </Link>
             </li>

@@ -20,12 +20,14 @@ const ReelVideoPlayer = ({
   const router = useRouter();
 
   useEffect(() => {
-    const currentParams = new URLSearchParams(searchParams.toString());
-    currentParams.set("video", video!.id.toString());
-    const queryString = currentParams.toString();
-    router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`, {
-      scroll: false,
-    });
+    if (video && video.id) {
+      const currentParams = new URLSearchParams(searchParams.toString());
+      currentParams.set("video", video!.id.toString());
+      const queryString = currentParams.toString();
+      router.replace(`${pathname}${queryString ? `?${queryString}` : ""}`, {
+        scroll: false,
+      });
+    }
 
     if (videoRef.current) {
       videoRef.current.load();
