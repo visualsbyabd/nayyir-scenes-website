@@ -36,7 +36,7 @@ const ReelVideoPlayer = ({
         );
       });
     }
-  }, [video?.videoUrl]);
+  }, [video?.videoUrl, pathname, router, searchParams]);
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
