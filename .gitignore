@@ -53,3 +53,10 @@ next-env.d.ts
 *.aac
 *.ogg
 *.wma
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+/public/videos/
+/public/videos-thumbnails/
