@@ -28,7 +28,7 @@ const PrimaryButton = ({
       onMouseOut={() => {
         setHoverState(false);
       }}
-      className={`rounded-2xl whitespace-nowrap px-8 py-1 border-2 hover:bg-transparent duration-250 ease-in font-primary font-semibold ${colorMode === "primary" ? "bg-primary border-primary text-secondary hover:text-primary" : "bg-secondary border-secondary text-primary hover:text-secondary"}`}
+      className={`cursor-pointer rounded-2xl whitespace-nowrap px-8 py-1 border-2 hover:bg-transparent duration-250 ease-in font-primary font-semibold ${colorMode === "primary" ? "bg-primary border-primary text-secondary hover:text-primary" : "bg-secondary border-secondary text-primary hover:text-secondary"}`}
     >
       {title}
     </button>

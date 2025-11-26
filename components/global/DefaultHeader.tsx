@@ -34,7 +34,7 @@ const DefaultHeader = () => {
           className="max-h-12 object-contain object-center max-w-16 lg:max-w-32"
         />
       </Link>
-      <div className="items-center justify-center lg:flex hidden flex-row w-full">
+      <div className="items-center justify-center flex  flex-row w-full">
         {headerTabs.map((tab, i) => (
           <Link href={tab.href} key={i}>
             <p

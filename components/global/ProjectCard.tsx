@@ -1,7 +1,8 @@
 import React from "react";
-import { genres, Project } from "@/utils/ProjectsData";
+import { genres } from "@/utils/ProjectsData";
 import Image from "next/image";
 import Link from "next/link";
+import { Project } from "@/models/Project";
 import { convertEpochToDateString } from "@/utils/formatter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faHeart, faMessage } from "@fortawesome/free-solid-svg-icons";
@@ -16,12 +17,11 @@ const ProjectCard = ({
   allowHoverScale?: boolean;
   openReelVideoPlayerCallback: (project: Project) => void;
 }) => {
-  console.log(allowHoverScale)
   return (
     <div
       key={project.id}
       className={`w-full h-full cursor-pointer border-2 border-transparent lg:hover:drop-shadow-2xl  lg:hover:border-primary/50 duration-300 ease ${
-        allowHoverScale ? `lg:hover:scale-110`:``
+        allowHoverScale ? `lg:hover:scale-110` : ``
       } bg-secondary-varient rounded-2xl relative overflow-hidden`}
       onClick={() => {
         openReelVideoPlayerCallback(project);
@@ -37,8 +37,7 @@ const ProjectCard = ({
       />
       {/*  Content Overlays*/}
       <div className="opacity-0 md:opacity-100 w-full h-9/10 lg:h-2/3 absolute bottom-0 bg-gradient-to-t from-secondary to-secondary/0"></div>
-      <div className="opacity-0 md:opacity-100 w-full h-9/10 lg:h-2/3 absolute bottom-0 bg-gradient-to-t from-secondary to-secondary/0"></div>
-      <div className="opacity-0 md:opacity-100 w-full h-9/10 lg:h-2/3 absolute bottom-0 bg-gradient-to-t from-secondary to-secondary/0"></div>
+      <div className="opacity-0 md:opacity-50 w-full h-9/10 lg:h-2/3 absolute bottom-0 bg-gradient-to-t from-secondary to-secondary/0"></div>
       <div className="w-full h-9/10 lg:h-2/3 absolute bottom-0 bg-gradient-to-t from-secondary to-secondary/0"></div>
       <div className="w-full md:hidden flex h-9/10 lg:h-2/3 absolute bottom-0 bg-gradient-to-t from-secondary to-secondary/0"></div>
       <div className="opacity-0 md:opacity-100 w-full h-1/2 absolute top-0 left-0 bg-gradient-to-br from-secondary via-secondary/0"></div>
@@ -74,13 +73,15 @@ const ProjectCard = ({
           {project.title}
         </h4>
         <p className="text-primary-varient lg:text-sm text-sm font-primary font-light">
-          {project.subtitle}
+          {project.subtitle.length > 60
+            ? `${project.subtitle.substring(0, 60)}...`
+            : project.subtitle}
         </p>
       </div>
       <div className="w-full h-1/10 absolute top-0 left-0 flex flex-row items-center justify-start px-4 py-2 gap-1">
         <FontAwesomeIcon icon={faEye} size="1x" className="text-primary" />
         <p className="text-sm font-primary text-primary font-medium">
-          {formatNumber(project.likes * project.comments)}
+          {formatNumber(project.views)}
         </p>
         <FontAwesomeIcon
           icon={faHeart}
