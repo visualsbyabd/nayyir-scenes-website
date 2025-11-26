@@ -12,9 +12,10 @@ import {
 import ReelVideoPlayer from "@/components/ReelVideoPlayer";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { Suspense, useState } from "react";
-import { Project } from "@/utils/ProjectsData";
+import { Project } from "@/models/Project";
+import { PortfolioData } from "@/models/PortfolioData";
 
-const HomeContent = () => {
+const HomeContent = ({ portfolioData }: { portfolioData: PortfolioData }) => {
   const [video, setVideo] = useState<Project | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
@@ -30,6 +31,7 @@ const HomeContent = () => {
       <ProjectsCountSection />
       <Suspense>
         <LatestProjectsSection
+          portfolioData={portfolioData}
           onOpenVideoReelPlayer={(video) => {
             setVideo(video);
             setIsOpen(true);
@@ -39,6 +41,7 @@ const HomeContent = () => {
       <ContactUsSection />
       <Suspense>
         <ReelVideoPlayer
+          recommendedProjects={portfolioData.projectsData}
           open={isOpen}
           video={video}
           closeCallback={() => {
