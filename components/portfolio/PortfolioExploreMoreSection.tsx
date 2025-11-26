@@ -2,11 +2,20 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { genres, Project, projectsData } from "@/utils/ProjectsData";
+import { genres } from "@/utils/ProjectsData";
+import { Project } from "@/models/Project";
 import { ProjectCard, SectionSubtitle, SectionTitle } from "../global";
 import { portfolioPageSectionsLabels } from "@/utils/SectionLabels";
 import { faAllergies } from "@fortawesome/free-solid-svg-icons";
-const PortfolioExploreMoreSection = ({onOpenReelVideoPlayer}: {onOpenReelVideoPlayer: (project: Project) => void}) => {  const [selectedGenre, setSelectedGenre] = useState<number>(-1);
+import { PortfolioData } from "@/models/PortfolioData";
+const PortfolioExploreMoreSection = ({
+  onOpenReelVideoPlayer,
+  portfolioData,
+}: {
+  onOpenReelVideoPlayer: (project: Project) => void;
+  portfolioData: PortfolioData;
+}) => {
+  const [selectedGenre, setSelectedGenre] = useState<number>(-1);
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -42,7 +51,8 @@ const PortfolioExploreMoreSection = ({onOpenReelVideoPlayer}: {onOpenReelVideoPl
             ...genres,
           ];
           return genresData.map((genre, index) => (
-            <div key={index}
+            <div
+              key={index}
               onClick={() => {
                 if (genre.id === selectedGenre) return;
                 let queryString = "";
@@ -76,8 +86,17 @@ const PortfolioExploreMoreSection = ({onOpenReelVideoPlayer}: {onOpenReelVideoPl
         })()}
       </div>
       <div className="mt-8 xl:max-w-7xl xl:px-0 md:px-8 h-full xl:gap-x-8 xl:gap-y-8 md:gap-x-4 md:gap-y-2 gap-2 items-center grid xl:grid-cols-5 md:grid-cols-3 grid-cols-2">
-        {projectsData.filter((project) => selectedGenre === -1 ? true :project.genreId === selectedGenre ).map((project, index) => (
-          <ProjectCard project={project} key={index} openReelVideoPlayerCallback={onOpenReelVideoPlayer}/>        ))}
+        {portfolioData.projectsData
+          .filter((project) =>
+            selectedGenre === -1 ? true : project.genreId === selectedGenre
+          )
+          .map((project, index) => (
+            <ProjectCard
+              project={project}
+              key={index}
+              openReelVideoPlayerCallback={onOpenReelVideoPlayer}
+            />
+          ))}
       </div>
     </section>
   );

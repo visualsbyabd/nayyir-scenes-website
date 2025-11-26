@@ -4,10 +4,12 @@ import { ProjectCard, SectionSubtitle, SectionTitle } from '../global'
 import { portfolioPageSectionsLabels } from '@/utils/SectionLabels'
 import { useMediaQuery } from 'react-responsive'
 import {useState, useEffect} from 'react'
-import { genres, Project, projectsData } from '@/utils/ProjectsData'
+import { genres } from '@/utils/ProjectsData'
 import { useSearchParams } from 'next/navigation'
+import { PortfolioData } from '@/models/PortfolioData'
+import { Project } from '@/models/Project'
 
-const PortfolioPickedForYourSection = ({onOpenReelVideoPlayer}: {onOpenReelVideoPlayer: (project:Project)=>void}) => {
+const PortfolioPickedForYourSection = ({onOpenReelVideoPlayer, portfolioData}: {onOpenReelVideoPlayer: (project:Project)=>void; portfolioData: PortfolioData}) => {
     const isMobile = useMediaQuery({
     query: "(min-width: 0px) and (max-width: 768px)",
   });
@@ -28,9 +30,9 @@ const max = isTablet ? 6 : isMobile ? 4 : 10;
       };
       setSelectedGenre(Number.parseInt(genre));
     })();
-    const selectedItems = projectsData.sort((projectA, projectB) => projectA.addedIn! - projectB.addedIn!).slice(0, max);
+    const selectedItems = portfolioData.projectsData.sort((projectA, projectB) => projectA.addedIn! - projectB.addedIn!).slice(0, max);
     setRandomItems(selectedItems);
-  }, [projectsData, max]);
+  }, [portfolioData.projectsData, max]);
   return (
     <section className="-mt-40 md:mt-0 overflow-hidden relative w-full flex flex-col items-center justify-center lg:px-12 lg:py-24 px-2 py-12">
       <div className='md:max-w-7xl w-full flex md:flex-row flex-col items-center justify-between'>
