@@ -1,13 +1,14 @@
-"use client";
 import React, { Suspense } from "react";
 import { PortfolioContent } from "@/components/portfolio";
+import { PortfolioData } from "@/models/PortfolioData";
+import { getPortfolioData } from "@/utils/getPortfolioData";
 
-const PortfolioPage = () => {
+export default async function PortfolioPage() {
+  const portfolioData: PortfolioData = await getPortfolioData();
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <PortfolioContent />
+      <PortfolioContent portfolioData={portfolioData} />
     </Suspense>
   );
-};
-
-export default PortfolioPage;
+}
