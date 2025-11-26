@@ -57,6 +57,7 @@ next-env.d.ts
 *.jpg
 *.jpeg
 *.gif
+*.json
 
 /public/videos/
 /public/videos-thumbnails/
