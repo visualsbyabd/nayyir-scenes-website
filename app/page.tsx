@@ -2,7 +2,7 @@ import { HomeContent } from "@/components/home";
 import { PortfolioData } from "@/models/PortfolioData";
 import { getPortfolioData } from "@/utils/getPortfolioData";
 import { Suspense } from "react";
-
+export const dynamic = 'force-dynamic';
 export default async function Home() {
   const portfolioData: PortfolioData = await getPortfolioData();
 
