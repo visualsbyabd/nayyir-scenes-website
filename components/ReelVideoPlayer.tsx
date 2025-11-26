@@ -1,18 +1,21 @@
-import { Project, projectsData } from "@/utils/ProjectsData";
 import { faClose } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef } from "react";
 import { ProjectCard, SectionSubtitle, SectionTitle } from "./global";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { Project } from "@/models/Project";
+import { PortfolioData } from "@/models/PortfolioData";
 
 const ReelVideoPlayer = ({
   open,
   video,
   closeCallback,
+  recommendedProjects,
 }: {
   open: boolean;
   video: Project | null;
   closeCallback: () => void;
+  recommendedProjects: Project[];
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const pathname = usePathname();
@@ -136,7 +139,7 @@ const ReelVideoPlayer = ({
               />
             </div>
             <div className="w-full lg:grid hidden lg:h-[70%]  grid-cols-2 lg:grid-cols-4 gap-4 overflow-visible">
-              {projectsData
+              {recommendedProjects
                 .filter(
                   (project) =>
                     project.genreId === video?.genreId &&
