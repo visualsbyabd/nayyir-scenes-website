@@ -6,11 +6,18 @@ import {
   SectionSubtitle,
   SectionTitle,
 } from "@/components/global";
-import { Project, projectsData } from "@/utils/ProjectsData";
 import { useMediaQuery } from "react-responsive";
 import { homePageSectionsLabels } from "@/utils/SectionLabels";
+import { Project } from "@/models/Project";
+import { PortfolioData } from "@/models/PortfolioData";
 
-const LatestProjectsSection = ({onOpenVideoReelPlayer}: {onOpenVideoReelPlayer: (project: Project)=> void}) => {
+const LatestProjectsSection = ({
+  onOpenVideoReelPlayer,
+  portfolioData,
+}: {
+  onOpenVideoReelPlayer: (project: Project) => void;
+  portfolioData: PortfolioData;
+}) => {
   const isMobile = useMediaQuery({
     query: "(min-width: 0px) and (max-width: 768px)",
   });
@@ -20,7 +27,7 @@ const LatestProjectsSection = ({onOpenVideoReelPlayer}: {onOpenVideoReelPlayer: 
   const max = isTablet ? 6 : isMobile ? 4 : 8;
   const [randomItems, setRandomItems] = useState<Project[]>([]);
   useEffect(() => {
-    const shuffled = [...projectsData];
+    const shuffled = [...portfolioData.projectsData];
     for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
@@ -50,7 +57,11 @@ const LatestProjectsSection = ({onOpenVideoReelPlayer}: {onOpenVideoReelPlayer: 
       </div>
       <div className="w-[99%] max-w-7xl h-full mt-8 grid xl:grid-cols-4 md:grid-cols-3 grid-cols-2 lg:gap-x-8 lg:gap-y-8 gap-x-2 gap-y-2">
         {randomItems.map((project: Project, index: number) => (
-          <ProjectCard project={project} key={index} openReelVideoPlayerCallback={onOpenVideoReelPlayer} />
+          <ProjectCard
+            project={project}
+            key={index}
+            openReelVideoPlayerCallback={onOpenVideoReelPlayer}
+          />
         ))}
       </div>
     </section>

@@ -2,7 +2,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { useParallax } from "react-scroll-parallax";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronRight,
@@ -36,14 +35,6 @@ const channels = [
   },
 ];
 const HeroSection = () => {
-  const snippetOneParallax = useParallax<HTMLDivElement>({
-    speed: -1000,
-    translateY: [-300, 300, "easeInQuad"],
-  });
-  const snippetTwoParallax = useParallax<HTMLDivElement>({
-    speed: -1000,
-    translateY: [-450, 450, "easeInQuad"],
-  });
   return (
     <section className="w-full h-screen relative overflow-hidden bg-gradient-to-br from-secondary-varient/50 via-secondary/50 to-secondary-varient/50">
       <div className="w-full h-full flex relative -bottom-2/3 opacity-50">
@@ -69,102 +60,6 @@ const HeroSection = () => {
           </span>
         </h1>
         <SectionSubtitle text={homePageSectionsLabels.heroSection.subtitle} />
-      </div>
-      <div
-        className="w-[53%] h-full absolute top-0 left-0 border-[2px] border-primary rounded-3xl overflow-hidden"
-        ref={snippetOneParallax.ref}
-      >
-        {channels.map((channel, i) => (
-          <Link
-            key={i}
-            href={channel.link}
-            className={`w-full h-[10vh] flex flex-row items-center justify-between gap-2 px-2 ${i !== 2 && "border-b-2 border-secondary/10"}
-                        transition-all backdrop-blur-sm bg-background/25 hover:bg-secondary/10
-                        `}
-          >
-            <Image
-              src={channel.icon}
-              alt={channel.title}
-              width={64}
-              height={64}
-              className="h-[6vh] w-[6vh] aspect-square rounded-full object-cover object-center"
-            ></Image>
-            <div className="w-full h-full items-start justify-center flex flex-col">
-              <h3 className="text-sm whitespace-nowrap">{channel.title}</h3>
-              <p className="text-secondary font-regular text-sm font-secondary">
-                {channel.subsCount}
-              </p>
-            </div>
-            <FontAwesomeIcon
-              icon={faChevronRight}
-              color="#f9f9f9"
-              width={24}
-              height={24}
-            />
-          </Link>
-        ))}
-      </div>
-      <div
-        className="w-[53%] h-full absolute top-[120vh] right-0 border-[2px] border-primary rounded-3xl overflow-hidden"
-        ref={snippetTwoParallax.ref}
-      >
-        <div
-          className="w-full h-[10vh] flex flex-row items-center justify-between gap-2 px-2
-                        transition-all backdrop-blur-sm bg-background/25 hover:bg-secondary/10"
-        >
-          <FontAwesomeIcon
-            icon={faUsers}
-            width={32}
-            height={32}
-            color="#f9f9f9"
-          />
-          <div className="w-full h-full items-start justify-center flex flex-col">
-            <h3 className="text-sm whitespace-nowrap font-secondary">
-              {"> 1,000,000"}
-            </h3>
-            <p className="text-secondary font-regular text-sm font-secondary">
-              Subscribers on Youtube!
-            </p>
-          </div>
-        </div>
-        <div
-          className="w-full h-[10vh] flex flex-row items-center justify-between gap-2 px-2
-                        transition-all backdrop-blur-sm bg-background/25 hover:bg-secondary/10"
-        >
-          <FontAwesomeIcon
-            icon={faVideo}
-            width={32}
-            height={32}
-            color="#f9f9f9"
-          />
-          <div className="w-full h-full items-start justify-center flex flex-col">
-            <h3 className="text-sm whitespace-nowrap font-secondary">
-              {"> 1,000"}
-            </h3>
-            <p className="text-secondary font-regular text-sm font-secondary">
-              Videos on Youtube!
-            </p>
-          </div>
-        </div>
-        <div
-          className="w-full h-[10vh] flex flex-row items-center justify-between gap-2 px-2
-                        transition-all backdrop-blur-sm bg-background/25 hover:bg-secondary/10"
-        >
-          <FontAwesomeIcon
-            icon={faPlay}
-            width={32}
-            height={32}
-            color="#f9f9f9"
-          />
-          <div className="w-full h-full items-start justify-center flex flex-col">
-            <h3 className="text-sm whitespace-nowrap font-secondary">
-              {"> 1,000,000"}
-            </h3>
-            <p className="text-secondary font-regular text-sm font-secondary">
-              Views on Youtube!
-            </p>
-          </div>
-        </div>
       </div>
       <div className="w-full lg:h-1/3 h-1/2 bg-gradient-to-t from-background lg:via-transparent via-background to-background/0 absolute bottom-0"></div>
     </section>

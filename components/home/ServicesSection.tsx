@@ -1,17 +1,12 @@
+"use client";
 import React from "react";
 import { SectionSubtitle, SectionTitle } from "@/components/global";
 import { servicesData, ServiceData } from "@/utils/Consts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useMediaQuery } from "react-responsive";
 import { homePageSectionsLabels } from "@/utils/SectionLabels";
 
 const ServicesSection = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
-  const isTablet = useMediaQuery({
-    query: "(min-width: 768px) and (max-width: 1200px)",
-  });
-
-  return (
+ return (
     <section className="w-full h-screen bg-secondary/50 flex flex-col items-center justify-center lg:px-12 lg:py-24 px-8 py-24">
       <p className="z-10 max-w-4xl text-md text-primary/50 font-primary font-medium text-center mx-12 text-sm lg:text-lg">
         The Full Spectrum of Production

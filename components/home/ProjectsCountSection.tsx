@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   CountUpOnScroll,
@@ -5,15 +6,9 @@ import {
   SectionTitle,
 } from "@/components/global";
 import { ProjectCount, projectsCountsData } from "@/utils/Consts";
-import { useMediaQuery } from "react-responsive";
 import { homePageSectionsLabels } from "@/utils/SectionLabels";
 
 const ProjectsCountSection = () => {
-  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
-  const isTablet = useMediaQuery({
-    query: "(min-width: 768px) and (max-width: 1200px)",
-  });
-
   return (
     <section className="w-full lg:h-[60vh] md:h-[80vh] h-[140vh] flex flex-col items-center justify-center lg:px-24 lg:py-12 px-4 py-8">
       <SectionTitle text={homePageSectionsLabels.projectsCountsSection.title} />
