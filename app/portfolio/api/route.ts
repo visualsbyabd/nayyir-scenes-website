@@ -5,7 +5,7 @@ import { Project } from "@/models/Project";
 import { unstable_noStore } from 'next/cache';
 const logger = "[Login Router]: ";
 
-export const GET = async (req: NextRequest, _: NextResponse) => {
+export const GET = async (req: NextRequest) => {
   unstable_noStore();
   try {
     const projectsData: Project[] = [];
